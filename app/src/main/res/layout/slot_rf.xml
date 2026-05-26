@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    slot_rf.xml
+    Reusable RF slot row. Include 4× in activity_main with ids slotRf0..3.
+    Each included view exposes: tvSlotLabel, tvSlotData, btnCapture, btnReplay, btnClear.
+    The parent activity wires all 4 sets via findViewWithTag or direct include IDs.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#111420"
+    android:padding="10dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Slot label row: name + 3 action buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvSlotLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SLOT 1"
+            android:textColor="#C8D4E0"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.1"/>
+
+        <Button
+            android:id="@+id/btnCapture"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:text="CAP"
+            android:textColor="#00E87A"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:backgroundTint="#0A1A0F"
+            android:layout_marginStart="6dp"/>
+
+        <Button
+            android:id="@+id/btnReplay"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:text="REP"
+            android:textColor="#00B4FF"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:backgroundTint="#060C12"
+            android:layout_marginStart="6dp"/>
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:text="CLR"
+            android:textColor="#FF3A3A"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:backgroundTint="#120608"
+            android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+    <!-- Slot data / status line -->
+    <TextView
+        android:id="@+id/tvSlotData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="— NO DATA"
+        android:textColor="#2A3040"
+        android:textSize="10sp"
+        android:fontFamily="monospace"
+        android:layout_marginTop="4dp"/>
+
+</LinearLayout>

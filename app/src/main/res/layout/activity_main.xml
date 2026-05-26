@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#060810"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ══════════════════════════════
+             HEADER
+        ══════════════════════════════ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NUCLEA"
+            android:textColor="#00E87A"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:letterSpacing="0.5"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONTROLLER"
+            android:textColor="#2A3040"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:letterSpacing="1.2"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- ══════════════════════════════
+             CONNECTION CARD
+        ══════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#0C0E18"
+            app:strokeColor="#1A2A1A"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONNECTION"
+                    android:textColor="#2A3040"
+                    android:textSize="9sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.3"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="ESP32 IP Address"
+                        app:hintTextColor="#2A3040"
+                        app:boxStrokeColor="#1A3A2A"
+                        app:boxBackgroundColor="#111420"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etIp"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:fontFamily="monospace"
+                            android:textColor="#C8D4E0"
+                            android:textSize="13sp"
+                            android:inputType="textUri"
+                            android:text="192.168.4.1"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnConnect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="PING"
+                        android:textColor="#060810"
+                        android:fontFamily="monospace"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:backgroundTint="#00E87A"
+                        android:layout_marginStart="10dp"
+                        android:paddingHorizontal="22dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="● DISCONNECTED"
+                    android:textColor="#FF3A3A"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:background="#0D0608"
+                    android:padding="10dp"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════
+             RF 433 MHz — 4 SLOTS
+        ══════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#0C0E18"
+            app:strokeColor="#1A3A2A"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RF SLOTS  —  433 MHz"
+                    android:textColor="#2A3040"
+                    android:textSize="9sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.3"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="long-press slot name to rename"
+                    android:textColor="#1A2230"
+                    android:textSize="9sp"
+                    android:fontFamily="monospace"
+                    android:layout_marginBottom="14dp"/>
+
+                <include layout="@layout/slot_rf" android:id="@+id/slotRf0"/>
+                <include layout="@layout/slot_rf" android:id="@+id/slotRf1"/>
+                <include layout="@layout/slot_rf" android:id="@+id/slotRf2"/>
+                <include layout="@layout/slot_rf" android:id="@+id/slotRf3"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════
+             RF 433 MHz JAMMER
+        ══════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#100C06"
+            app:strokeColor="#3A2A0A"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RF JAMMER  —  433 MHz"
+                    android:textColor="#2A3040"
+                    android:textSize="9sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.3"
+                    android:layout_marginBottom="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <Button
+                        android:id="@+id/btnJamStart"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="▶ START JAM"
+                        android:textColor="#FF8C00"
+                        android:fontFamily="monospace"
+                        android:textSize="11sp"
+                        android:backgroundTint="#1A1006"
+                        android:layout_marginEnd="8dp"/>
+
+                    <Button
+                        android:id="@+id/btnJamStop"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="■ STOP JAM"
+                        android:textColor="#5A6A7A"
+                        android:fontFamily="monospace"
+                        android:textSize="11sp"
+                        android:backgroundTint="#0C0E18"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvJamStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="> JAMMER INACTIVE"
+                    android:textColor="#5A6A7A"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:background="#0A0806"
+                    android:padding="10dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════
+             nRF24L01  BLE JAMMER  ← NEW
+        ══════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#08060E"
+            app:strokeColor="#3A0A3A"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- header row: title + nRF24 ready badge -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="BLE JAMMER  —  nRF24L01+"
+                        android:textColor="#2A3040"
+                        android:textSize="9sp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.3"/>
+
+                    <TextView
+                        android:id="@+id/tvNrfReady"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="○ NRF NOT READY"
+                        android:textColor="#5A6A7A"
+                        android:textSize="9sp"
+                        android:fontFamily="monospace"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="floods BLE adv ch 37/38/39 + data channels  •  auto-stops 60 s"
+                    android:textColor="#1A1030"
+                    android:textSize="9sp"
+                    android:fontFamily="monospace"
+                    android:layout_marginBottom="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <Button
+                        android:id="@+id/btnBleJamStart"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="▶ START BLE JAM"
+                        android:textColor="#E040FB"
+                        android:fontFamily="monospace"
+                        android:textSize="11sp"
+                        android:backgroundTint="#130618"
+                        android:layout_marginEnd="8dp"/>
+
+                    <Button
+                        android:id="@+id/btnBleJamStop"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="■ STOP BLE JAM"
+                        android:textColor="#5A6A7A"
+                        android:fontFamily="monospace"
+                        android:textSize="11sp"
+                        android:backgroundTint="#0C0E18"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvBleJamStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="> BLE JAMMER INACTIVE"
+                    android:textColor="#5A6A7A"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:background="#0A0610"
+                    android:padding="10dp"/>
+
+                <!-- elapsed timer -->
+                <TextView
+                    android:id="@+id/tvBleJamTimer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#5A006A"
+                    android:textSize="10sp"
+                    android:fontFamily="monospace"
+                    android:padding="4dp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════
+             INFRARED — 4 SLOTS
+        ══════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#060C10"
+            app:strokeColor="#0A1A2A"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INFRARED SLOTS  —  38 kHz"
+                    android:textColor="#2A3040"
+                    android:textSize="9sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.3"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="long-press slot name to rename"
+                    android:textColor="#1A2230"
+                    android:textSize="9sp"
+                    android:fontFamily="monospace"
+                    android:layout_marginBottom="14dp"/>
+
+                <include layout="@layout/slot_ir" android:id="@+id/slotIr0"/>
+                <include layout="@layout/slot_ir" android:id="@+id/slotIr1"/>
+                <include layout="@layout/slot_ir" android:id="@+id/slotIr2"/>
+                <include layout="@layout/slot_ir" android:id="@+id/slotIr3"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════
+             BT DUCKY — 4 PAYLOAD SLOTS
+        ══════════════════════════════ -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#08060E"
+            app:strokeColor="#1A0A2A"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="BT DUCKY  —  HID KEYBOARD"
+                        android:textColor="#2A3040"
+                        android:textSize="9sp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.3"/>
+
+                    <TextView
+                        android:id="@+id/tvBtConnected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="○ BLE OFF"
+                        android:textColor="#5A6A7A"
+                        android:textSize="9sp"
+                        android:fontFamily="monospace"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <Button
+                        android:id="@+id/btnBleOn"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="⬤ BLE ON"
+                        android:textColor="#060810"
+                        android:fontFamily="monospace"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:backgroundTint="#A020F0"
+                        android:layout_marginEnd="6dp"/>
+
+                    <Button
+                        android:id="@+id/btnBleOff"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="○ BLE OFF"
+                        android:textColor="#5A6A7A"
+                        android:fontFamily="monospace"
+                        android:textSize="11sp"
+                        android:backgroundTint="#0C0E18"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="long-press slot name to rename  •  tap ✎ to edit payload"
+                    android:textColor="#1A2230"
+                    android:textSize="9sp"
+                    android:fontFamily="monospace"
+                    android:layout_marginBottom="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Quick-type text"
+                        app:hintTextColor="#2A2040"
+                        app:boxStrokeColor="#2A1A3A"
+                        app:boxBackgroundColor="#110E18"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etBtQuickType"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:fontFamily="monospace"
+                            android:textColor="#C8D4E0"
+                            android:textSize="12sp"
+                            android:inputType="text"
+                            android:imeOptions="actionSend"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnBtQuickType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="TYPE"
+                        android:textColor="#060810"
+                        android:fontFamily="monospace"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:backgroundTint="#A020F0"
+                        android:layout_marginStart="8dp"
+                        android:paddingHorizontal="16dp"/>
+                </LinearLayout>
+
+                <include layout="@layout/slot_bt" android:id="@+id/slotBt0"/>
+                <include layout="@layout/slot_bt" android:id="@+id/slotBt1"/>
+                <include layout="@layout/slot_bt" android:id="@+id/slotBt2"/>
+                <include layout="@layout/slot_bt" android:id="@+id/slotBt3"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ══════════════════════════════
+             SYSTEM LOG
+        ══════════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SYSTEM LOG"
+            android:textColor="#2A3040"
+            android:textSize="9sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.3"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tvLog"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#080A10"
+            android:textColor="#2A3040"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:padding="12dp"
+            android:gravity="bottom"
+            android:scrollbars="vertical"/>
+
+    </LinearLayout>
+</ScrollView>
